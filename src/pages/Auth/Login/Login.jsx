@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Navbar from "../../Navbar/Navbar";
 import { useContext } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
@@ -10,6 +10,9 @@ import { AuthContext } from "../../../provider/AuthProvider";
 const Login = () => {
 
   const navigate=useNavigate();
+
+  const location=useLocation();
+  console.log(location);
 
   const {loginUser}=useContext(AuthContext);
 
@@ -23,7 +26,9 @@ const Login = () => {
     .then(result=>{
         const user=result.user;
         console.log(user);
-        navigate('/');
+        {
+          location.state ? navigate(location.state) : navigate('/');
+        }
         // form.reset();
         
     })

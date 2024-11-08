@@ -1,6 +1,7 @@
 import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import app from "../firebase/firebase.config";
+import PropTypes from "prop-types";
 import { RotatingSquare } from "react-loader-spinner";
 
 export const AuthContext=createContext(null);
@@ -73,3 +74,8 @@ const AuthProvider = ({children}) => {
 };
 
 export default AuthProvider;
+
+AuthProvider.propTypes={
+    children:PropTypes.element  
+
+}
